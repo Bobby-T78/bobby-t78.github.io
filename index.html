@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <meta name="google-site-verification" content="h9mO5pkp7jaCOfVQql-mpNyECotuHf_eVYKItDyISn0" />
 <title>Bobby T. Hickey &middot; Disruptive Depths &middot; Operations Leader in Aggregates &amp; Mining</title>
-<meta name="description" content="Bobby T. Hickey, operations leader in aggregates and mining, writes Disruptive Depths, ai in heavy industry. Floor level takes on leadership, reliability, and AI on the plant floor."/>
+<meta name="description" content="Bobby T. Hickey, operations leader in aggregates and mining, writes Disruptive Depths, AI in heavy industry. Floor level takes on leadership, reliability, and AI on the plant floor."/>
 <link rel="canonical" href="https://bobby.bobbythickey.com/"/>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%2326363f'/%3E%3Ctext x='50' y='72' font-size='62' font-family='Arial,sans-serif' font-weight='bold' fill='white' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E"/>
 <meta property="og:type" content="website"/>
@@ -25,7 +25,7 @@
   "@type": "Person",
   "name": "Bobby T. Hickey",
   "alternateName": "Disruptive Depths",
-  "description": "Operations leader in aggregates and mining. Writer of Disruptive Depths, ai in heavy industry.",
+  "description": "Operations leader in aggregates and mining. Writer of Disruptive Depths, AI in heavy industry.",
   "jobTitle": "Operations Leader, Aggregates & Mining",
   "url": "https://bobby.bobbythickey.com/",
   "image": "https://bobby.bobbythickey.com/profile-new.jpg",
@@ -63,6 +63,13 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .brand{font-size:22px;font-weight:800}.brand span{color:var(--accent)}
 .navlinks a{margin-left:26px;text-decoration:none;color:var(--ink);font-weight:600;font-size:15px;opacity:.85}
 .navlinks a:hover{opacity:1;color:var(--accent)}
+  .navtoggle{display:none;background:none;border:none;font-size:26px;line-height:1;cursor:pointer;color:var(--ink);padding:4px 8px}
+  @media (max-width:640px){
+    .navtoggle{display:inline-flex}
+    .navlinks{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;background:rgba(255,255,255,.97);padding:12px 24px 20px;border-bottom:1px solid rgba(38,54,63,.12);box-shadow:0 12px 24px rgba(15,23,42,.12)}
+    .navlinks.open{display:flex}
+    .navlinks a{margin:10px 0 0 0;display:block}
+  }
 .hero{display:flex;gap:40px;align-items:center;padding:70px 0 50px;flex-wrap:wrap}
 .hero-text{flex:1;min-width:300px}
 .eyebrow{font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:13px;color:#9a520a}
@@ -111,7 +118,8 @@ footer{text-align:center;padding:36px 0;color:#9a520a;font-weight:600;font-size:
 <body>
 <nav><div class="wrap">
 <div class="brand">Bobby <span>Hickey</span></div>
-<div class="navlinks">
+<button class="navtoggle" aria-label="Toggle menu" aria-expanded="false" onclick="var m=document.querySelector('.navlinks');var isOpen=m.classList.toggle('open');this.setAttribute('aria-expanded', isOpen ? 'true' : 'false');">&#9776;</button>
+  <div class="navlinks">
 <a href="#about">About</a><a href="#pillars">Approach</a><a href="#writing">Writing</a><a href="#contact">Contact</a>
 </div></div></nav>
 
@@ -139,9 +147,12 @@ footer{text-align:center;padding:36px 0;color:#9a520a;font-weight:600;font-size:
 <p class="lead" style="margin-top:14px">My focus is the opposite of erosion: operations where expectations are clear, ownership is shared, and performance is repeatable. The goal is simple: leave operations stronger than I found them, and develop people capable of carrying them even further.</p>
 <div class="proof">
 <div class="stat"><div class="statnum">97%</div><div class="statlabel">RBM on the Cat MD6 mining drill value stream</div></div>
-<div class="stat"><div class="statnum">30%</div><div class="statlabel">Reduction in production downtime</div></div>
-<div class="stat"><div class="statnum">15+</div><div class="statlabel">Years in aggregates &amp; mining, welder to manager</div></div>
+<div class="stat"><div class="statnum">95%</div><div class="statlabel">ABM through strategic employee placement</div></div>
+  <div class="stat"><div class="statnum">30%</div><div class="statlabel">Reduction in production downtime</div></div>
+  <div class="stat"><div class="statnum">15%</div><div class="statlabel">Increase in employee engagement</div></div>
+<div class="stat"><div class="statnum">15+</div><div class="statlabel">Years in mining, aggregates &amp; heavy industry, welder to manager</div></div>
 </div>
+  <p class="lead" style="margin-top:18px"><span class="wn-strong">How:</span> Strategic employee placement and resolving priority issues in real time, rather than letting them stall the line, kept RBM and ABM high. Downtime dropped by catching defects before they reached the line, keeping work staged so crews didn't have to hunt for it, empowering the team to hit the stop button and fix issues immediately instead of working through them, and staying focused on continuous quality improvement. Engagement rose by listening to what people needed, prioritizing work/life balance, launching a recognition program, and running quarterly check-ins on where people stand.</p>
 <div class="writing-note">
 <p>I write about AI in the workplace because the distance between a boardroom slide deck and what actually works on a plant floor is wide. Most people writing about it have never run a crew.</p>
 <p class="wn-strong">I have.</p>
