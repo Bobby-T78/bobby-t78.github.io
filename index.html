@@ -99,14 +99,19 @@ h2{font-size:clamp(26px,3.5vw,38px);margin:10px 0 18px}
 .article:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(38,54,63,.22)}
 .atag{font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
 .article h3{font-size:19px;margin:10px 0 6px;line-height:1.25}
-.aread{margin-top:14px;font-weight:700;color:var(--accent);font-size:14px}
+.article p{color:var(--muted);font-size:14px;margin-top:4px}
+.aread{margin-top:14px;font-weight:700;color:var(--accent);font-size:14px;display:inline-block}
 .contact{text-align:center}
 .contact .btns{justify-content:center}
+.open-note{margin:18px auto 0;max-width:560px;font-weight:700;color:var(--accent2);font-size:15px}
 footer{text-align:center;padding:36px 0;color:#9a520a;font-weight:600;font-size:14px}
 .proof{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin-top:26px}
 .stat{background:rgba(255,255,255,.92);border-radius:16px;padding:20px 22px;border-left:4px solid var(--accent)}
 .statnum{font-family:'Sora',sans-serif;font-weight:800;font-size:32px;color:var(--accent)}
 .statlabel{color:var(--muted);font-size:14px;margin-top:4px}
+.how-list{margin-top:18px;max-width:720px}
+.how-list p{color:var(--muted);font-size:16px;margin-bottom:10px}
+.how-list .wn-strong{font-weight:700;color:var(--ink)}
 .writing-note{background:rgba(255,255,255,.6);border-left:4px solid var(--accent2);padding:18px 22px;border-radius:12px;margin-top:22px;color:var(--muted);font-size:16px;max-width:720px}
 .writing-note p{margin-bottom:10px}
 .writing-note p:last-child{margin-bottom:0}
@@ -143,16 +148,20 @@ footer{text-align:center;padding:36px 0;color:#9a520a;font-weight:600;font-size:
 <section id="about"><div class="card-surface">
 <div class="sec-label">About</div>
 <h2>Standards win the long game.</h2>
-<p class="lead">Most aggregate operations don't fail because of bad equipment or bad people. They fail because standards erode, ownership blurs, and accountability becomes optional. I've spent 15+ years fixing exactly that. Welder to leadman to foreman to production manager, every step earned on the floor.</p>
-<p class="lead" style="margin-top:14px">My focus is the opposite of erosion: operations where expectations are clear, ownership is shared, and performance is repeatable. The goal is simple: leave operations stronger than I found them, and develop people capable of carrying them even further.</p>
+<p class="lead">Most aggregate operations don't fail because of bad equipment or bad people. They fail because standards erode, ownership blurs, and accountability becomes optional. I've spent 15+ years fixing exactly that. Welder to leadman to production manager, every step earned on the floor.</p>
+<p class="lead" style="margin-top:14px">That path ran through quarry pits, a heavy equipment assembly line, and aggregate plants across Oklahoma and Texas. My focus is the opposite of erosion: operations where expectations are clear, ownership is shared, and performance is repeatable. The goal is simple: leave operations stronger than I found them, and develop people capable of carrying them even further.</p>
 <div class="proof">
-<div class="stat"><div class="statnum">97%</div><div class="statlabel">RBM on the Cat MD6 mining drill value stream</div></div>
-<div class="stat"><div class="statnum">95%</div><div class="statlabel">ABM through strategic employee placement</div></div>
+<div class="stat"><div class="statnum">97%</div><div class="statlabel">Labor efficiency to rolling business model (RBM) leading a mining drill value stream</div></div>
+<div class="stat"><div class="statnum">95%</div><div class="statlabel">Labor efficiency to annual business model (ABM) through strategic employee placement</div></div>
   <div class="stat"><div class="statnum">30%</div><div class="statlabel">Reduction in production downtime</div></div>
   <div class="stat"><div class="statnum">15%</div><div class="statlabel">Increase in employee engagement</div></div>
 <div class="stat"><div class="statnum">15+</div><div class="statlabel">Years in mining, aggregates &amp; heavy industry, welder to manager</div></div>
 </div>
-  <p class="lead" style="margin-top:18px"><span class="wn-strong">How:</span> Strategic employee placement and resolving priority issues in real time, rather than letting them stall the line, kept RBM and ABM high. Downtime dropped by catching defects before they reached the line, keeping work staged so crews didn't have to hunt for it, empowering the team to hit the stop button and fix issues immediately instead of working through them, and staying focused on continuous quality improvement. Engagement rose by listening to what people needed, prioritizing work/life balance, launching a recognition program, and running quarterly check-ins on where people stand.</p>
+<div class="how-list">
+<p><span class="wn-strong">How the efficiency numbers held:</span> strategic employee placement and resolving priority issues in real time, instead of letting them stall the line.</p>
+<p><span class="wn-strong">How downtime dropped:</span> catching defects before they reached the line, staging work so crews never had to hunt for it, and empowering the team to stop and fix instead of working through problems.</p>
+<p><span class="wn-strong">How engagement rose:</span> listening to what people needed, protecting work/life balance, launching a recognition program, and running quarterly check-ins on where people stand.</p>
+</div>
 <div class="writing-note">
 <p>I write about AI in the workplace because the distance between a boardroom slide deck and what actually works on a plant floor is wide. Most people writing about it have never run a crew.</p>
 <p class="wn-strong">I have.</p>
@@ -177,9 +186,9 @@ footer{text-align:center;padding:36px 0;color:#9a520a;font-weight:600;font-size:
 <h2>Writing on leadership &amp; innovation</h2>
 <p class="lead">Exploring the intersection of AI, operations, leadership, and the future of industry, published on my Substack. Here are my three latest essays:</p>
 <div class="articles" id="articles">
-<a class="article" href="https://hickeyb.substack.com/p/the-bottleneck-was-never-the-truck" target="_blank" rel="noopener"><span class="atag">Latest Essay</span><h3>The Bottleneck Was Never the Truck</h3><span class="aread">Read on Substack &rarr;</span></a>
-<a class="article" href="https://hickeyb.substack.com/p/the-floor-isnt-in-the-room" target="_blank" rel="noopener"><span class="atag">AI &amp; Society</span><h3>The Floor Isn&rsquo;t in the Room</h3><span class="aread">Read on Substack &rarr;</span></a>
-<a class="article" href="https://hickeyb.substack.com/p/ais-impact-on-society-democracy-and" target="_blank" rel="noopener"><span class="atag">AI &amp; Society</span><h3>AI&rsquo;s Impact on Society, Democracy, and Human Agency</h3><span class="aread">Read on Substack &rarr;</span></a>
+<a class="article" href="https://hickeyb.substack.com/p/the-bottleneck-was-never-the-truck" target="_blank" rel="noopener"><span class="atag">Latest Essay</span><h3>The Bottleneck Was Never the Truck</h3><p>A floor level look at where autonomous haulage actually gains or loses its ground.</p><span class="aread">Read on Substack &rarr;</span></a>
+<a class="article" href="https://hickeyb.substack.com/p/the-floor-isnt-in-the-room" target="_blank" rel="noopener"><span class="atag">Disruptive Depths</span><h3>The Floor Isn&rsquo;t in the Room</h3><p>What gets missed when the people running the crews are not in the room where AI decisions get made.</p><span class="aread">Read on Substack &rarr;</span></a>
+<a class="article" href="https://hickeyb.substack.com/p/ais-impact-on-society-democracy-and" target="_blank" rel="noopener"><span class="atag">AI &amp; Society</span><h3>AI&rsquo;s Impact on Society, Democracy, and Human Agency</h3><p>A wider lens on what AI adoption means beyond the plant gate.</p><span class="aread">Read on Substack &rarr;</span></a>
 </div>
 <div class="btns" style="margin-top:28px"><a class="btn btn-amber" href="https://hickeyb.substack.com" target="_blank" rel="noopener">See all writing on Substack</a></div>
 </div></section>
@@ -188,6 +197,7 @@ footer{text-align:center;padding:36px 0;color:#9a520a;font-weight:600;font-size:
 <div class="sec-label">Let's Connect</div>
 <h2>Let's build something that lasts.</h2>
 <p class="lead" style="margin:0 auto">Always open to conversations about operations, leadership, and the practical edge of technology in mining and aggregates. If any of this resonates, reach out. I answer.</p>
+<p class="open-note">Currently exploring operations leadership roles in mining, aggregates, and heavy industry.</p>
 <div class="btns">
 <a class="btn btn-primary" href="mailto:Bobby@bobbythickey.com">&#9993; Email Me</a>
 <a class="btn btn-amber" href="Bobby-Hickey-Resume.pdf" download>Download resume</a>
@@ -220,10 +230,21 @@ footer{text-align:center;padding:36px 0;color:#9a520a;font-weight:600;font-size:
         tag.textContent = i === 0 ? 'Latest Essay' : 'Disruptive Depths';
         var h = document.createElement('h3');
         h.textContent = item.title;
+        a.appendChild(tag); a.appendChild(h);
+        // Pull a short teaser from the feed description, stripped of HTML.
+        var descSrc = item.description || '';
+        var tmp = document.createElement('div');
+        tmp.innerHTML = descSrc;
+        var text = (tmp.textContent || '').trim();
+        if(text){
+          var p = document.createElement('p');
+          p.textContent = text.length > 120 ? text.slice(0, 117).trim() + '\u2026' : text;
+          a.appendChild(p);
+        }
         var read = document.createElement('span');
         read.className = 'aread';
         read.textContent = 'Read on Substack \u2192';
-        a.appendChild(tag); a.appendChild(h); a.appendChild(read);
+        a.appendChild(read);
         wrap.appendChild(a);
       });
     })
@@ -232,4 +253,3 @@ footer{text-align:center;padding:36px 0;color:#9a520a;font-weight:600;font-size:
 </script>
 </body>
 </html>
-
