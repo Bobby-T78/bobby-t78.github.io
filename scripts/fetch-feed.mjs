@@ -1,10 +1,14 @@
 const FEED = "https://hickeyb.substack.com/feed";
 
-// Fetch the Substack RSS feed directly on the GitHub Actions server.
-// No browser CORS limit and no third-party service (rss2json) to cache
-// or rate-limit us. No API key needed.
+// Fetch the Substack RSS feed directly. Substack sits behind Cloudflare, which
+// blocks requests that do not look like a real browser, so we send full browser
+// headers. Runs on the GitHub Actions server: no CORS, no third-party service.
 const res = await fetch(FEED, {
-  headers: { "User-Agent": "bobby-t78-site-feed-fetcher" },
+  headers: {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "en-US,en;q=0.9",
+  },
 });
 const xml = await res.text();
 
