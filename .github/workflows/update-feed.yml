@@ -1,0 +1,21 @@
+name: Update Substack feed
+on:
+  schedule:
+    - cron: "0 * * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch and parse Substack feed
+        run: node scripts/fetch-feed.mjs
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add latest.json
+          git diff --staged --quiet || git commit -m "Update latest.json"
+          git push
