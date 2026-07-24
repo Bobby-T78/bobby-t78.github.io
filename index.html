@@ -232,9 +232,9 @@ footer a:hover{color:#fff}
 <h3>New from Disruptive Depths</h3>
 </div>
 <div class="articles" id="articles">
-<a class="article" href="https://hickeyb.substack.com/p/the-internet-of-rock" target="_blank" rel="noopener"><span class="atag">Latest Essay</span><h3>The Internet of Rock</h3><p>Data rights are the new mineral rights, and producers are signing blind.</p><span class="aread">Read on Substack &rarr;</span></a>
-<a class="article" href="https://hickeyb.substack.com/p/the-bottleneck-was-never-the-truck" target="_blank" rel="noopener"><span class="atag">Disruptive Depths</span><h3>The Bottleneck Was Never the Truck</h3><p>A floor level look at where autonomous haulage actually gains or loses its ground.</p><span class="aread">Read on Substack &rarr;</span></a>
-<a class="article" href="https://hickeyb.substack.com/p/the-floor-isnt-in-the-room" target="_blank" rel="noopener"><span class="atag">Disruptive Depths</span><h3>The Floor Isn&rsquo;t in the Room</h3><p>What gets missed when the people running the crews are not in the room where AI decisions get made.</p><span class="aread">Read on Substack &rarr;</span></a>
+<a class="article" href="https://hickeyb.substack.com/p/the-book-in-the-glove-box" target="_blank" rel="noopener"><span class="atag">Latest Essay</span><h3>The Book in the Glove Box</h3><p>MSHA hands out a field book. I built the thing it should have been.</p><span class="aread">Read on Substack &rarr;</span></a>
+<a class="article" href="https://hickeyb.substack.com/p/the-mine-that-died-twice" target="_blank" rel="noopener"><span class="atag">Disruptive Depths</span><h3>The Mine That Died Twice</h3><p>A robot dog is patrolling a copper mine in Utah. The coverage is about the robot. The story is about the ground it walks on.</p><span class="aread">Read on Substack &rarr;</span></a>
+<a class="article" href="https://hickeyb.substack.com/p/left-unattended" target="_blank" rel="noopener"><span class="atag">Disruptive Depths</span><h3>Left Unattended</h3><p>The rules that govern American pits were written to protect the person in the cab. The trucks running Texas quarries have no one in them.</p><span class="aread">Read on Substack &rarr;</span></a>
 </div>
 <div class="btns" style="margin-top:28px"><a class="btn btn-amber" href="https://hickeyb.substack.com" target="_blank" rel="noopener">See all writing on Substack</a></div>
 <div class="subscribe">
@@ -262,45 +262,78 @@ footer a:hover{color:#fff}
 
 <footer style="color:#e6dfd0">&copy; 2026 Bobby T. Hickey &middot; <a href="Bobby-Hickey-Resume.pdf" download>resume</a></footer>
 <script>
-// Auto-refresh latest 3 essays from Substack RSS. If the fetch fails for any
-// reason, the hardcoded cards above stay in place untouched.
+// Latest essays: fetch the Substack RSS feed LIVE through your own
+// Cloudflare Worker (dd-feed), so there is no rss2json cache lag.
+// Fallbacks, in order:
+//   1. Live RSS via your Cloudflare Worker
+//   2. The repo's latest.json (whatever the hourly workflow last wrote)
+//   3. The hardcoded cards above (never touched unless we have real data)
 (function(){
-  fetch('/latest.json?cb=' + Date.now())
-    .then(function(r){ return r.ok ? r.json() : Promise.reject(); })
-    .then(function(data){
-      if(!data || data.length < 3) return;
-      var wrap = document.getElementById('articles');
-      wrap.innerHTML = '';
-      data.slice(0,3).forEach(function(item, i){
-        var a = document.createElement('a');
-        a.className = 'article';
-        a.href = item.link;
-        a.target = '_blank';
-        a.rel = 'noopener';
-        var tag = document.createElement('span');
-        tag.className = 'atag';
-        tag.textContent = i === 0 ? 'Latest Essay' : 'Disruptive Depths';
-        var h = document.createElement('h3');
-        h.textContent = item.title;
-        a.appendChild(tag); a.appendChild(h);
-        // Pull a short teaser from the feed description, stripped of HTML.
-        var descSrc = item.description || '';
-        var tmp = document.createElement('div');
-        tmp.innerHTML = descSrc;
-        var text = (tmp.textContent || '').trim();
-        if(text){
-          var p = document.createElement('p');
-          p.textContent = text.length > 120 ? text.slice(0, 117).trim() + '\u2026' : text;
-          a.appendChild(p);
-        }
-        var read = document.createElement('span');
-        read.className = 'aread';
-        read.textContent = 'Read on Substack \u2192';
-        a.appendChild(read);
-        wrap.appendChild(a);
+  var WORKER_URL = 'https://dd-feed.bhickey-78.workers.dev';
+  var wrap = document.getElementById('articles');
+  function render(items){
+    if(!items || items.length < 3) return false;
+    wrap.innerHTML = '';
+    items.slice(0,3).forEach(function(item, i){
+      var a = document.createElement('a');
+      a.className = 'article';
+      a.href = item.link;
+      a.target = '_blank';
+      a.rel = 'noopener';
+      var tag = document.createElement('span');
+      tag.className = 'atag';
+      tag.textContent = i === 0 ? 'Latest Essay' : 'Disruptive Depths';
+      var h = document.createElement('h3');
+      h.textContent = item.title;
+      a.appendChild(tag); a.appendChild(h);
+      var tmp = document.createElement('div');
+      tmp.innerHTML = item.description || '';
+      var text = (tmp.textContent || '').trim();
+      if(text){
+        var p = document.createElement('p');
+        p.textContent = text.length > 120 ? text.slice(0, 117).trim() + '\u2026' : text;
+        a.appendChild(p);
+      }
+      var read = document.createElement('span');
+      read.className = 'aread';
+      read.textContent = 'Read on Substack \u2192';
+      a.appendChild(read);
+      wrap.appendChild(a);
+    });
+    return true;
+  }
+  function parseRss(xmlText){
+    var doc = new DOMParser().parseFromString(xmlText, 'text/xml');
+    if(doc.querySelector('parsererror')) throw new Error('bad xml');
+    var items = Array.prototype.slice.call(doc.querySelectorAll('item')).map(function(it){
+      function pick(sel){ var n = it.querySelector(sel); return n ? n.textContent.trim() : ''; }
+      return { title: pick('title'), link: pick('link'), description: pick('description') };
+    }).filter(function(it){ return it.title && it.link; });
+    if(items.length < 3) throw new Error('too few items');
+    return items;
+  }
+  function fetchWithTimeout(url, ms){
+    var ctrl = new AbortController();
+    var t = setTimeout(function(){ ctrl.abort(); }, ms);
+    return fetch(url, { signal: ctrl.signal }).finally(function(){ clearTimeout(t); });
+  }
+  function tryProxy(url){
+    return fetchWithTimeout(url, 8000)
+      .then(function(r){ if(!r.ok) throw new Error('http ' + r.status); return r.text(); })
+      .then(parseRss);
+  }
+  function tryJson(){
+    return fetchWithTimeout('/latest.json?cb=' + Date.now(), 6000)
+      .then(function(r){ if(!r.ok) throw new Error('http ' + r.status); return r.json(); })
+      .then(function(data){
+        if(!data || data.length < 3) throw new Error('bad json');
+        return data;
       });
-    })
-    .catch(function(){ /* keep static fallback */ });
+  }
+  tryProxy(WORKER_URL)
+    .catch(function(){ return tryJson(); })
+    .then(function(items){ render(items); })
+    .catch(function(){ /* keep static fallback cards untouched */ });
 })();
 </script>
 <!-- GoatCounter analytics. Free, privacy friendly, no cookie banner needed.
