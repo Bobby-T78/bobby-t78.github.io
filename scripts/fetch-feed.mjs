@@ -1,12 +1,31 @@
 const FEED = "https://hickeyb.substack.com/feed";
 
-const xml = await fetch(FEED, { headers: { "User-Agent": "gh-actions-feed" } })
-  .then(r => r.text());
+const res = await fetch(FEED, {
+  headers: {
+    "User-Agent": "Mozilla/5.0 (compatible; feed-bot/1.0)",
+    "Accept": "application/rss+xml, application/xml, text/xml, */*",
+  },
+  redirect: "follow",
+});
 
-const items = [...xml.matchAll(/<item>([\s\S]*?)<\/item>/g)].map(m => m[1]);
+const xml = await res.text();
+
+// Diagnostics so the Action log tells us exactly what came back.
+console.log("HTTP status:", res.status);
+console.log("Body length:", xml.length);
+console.log("First 120 chars:", JSON.stringify(xml.slice(0, 120)));
+
+if (!res.ok) {
+  throw new Error("Feed fetch failed with status " + res.status);
+}
+
+// Tolerant item matcher: handles <item> with or without attributes.
+const items = [...xml.matchAll(/<item(?:\s[^>]*)?>([\s\S]*?)<\/item>/g)].map(m => m[1]);
+console.log("Items found:", items.length);
 
 const pick = (block, tag) => {
-  const m = block.match(new RegExp(`<${tag}>(?:<!\\[CDATA\\[)?([\\s\\S]*?)(?:\\]\\]>)?<\\/${tag}>`));
+  const re = new RegExp("<" + tag + "(?:\\s[^>]*)?>(?:<!\\[CDATA\\[)?([\\s\\S]*?)(?:\\]\\]>)?<\\/" + tag + ">");
+  const m = block.match(re);
   return m ? m[1].trim() : "";
 };
 
