@@ -265,7 +265,7 @@ footer a:hover{color:#fff}
 // Auto-refresh latest 3 essays from Substack RSS. If the fetch fails for any
 // reason, the hardcoded cards above stay in place untouched.
 (function(){
-  fetch('/latest.json')
+  fetch('/latest.json?cb=' + Date.now())
     .then(function(r){ return r.ok ? r.json() : Promise.reject(); })
     .then(function(data){
       if(!data || data.length < 3) return;
