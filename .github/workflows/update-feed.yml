@@ -11,6 +11,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Fetch and parse Substack feed
+        env:
+          RSS2JSON_API_KEY: ${{ secrets.RSS2JSON_API_KEY }}
         run: node scripts/fetch-feed.mjs
       - name: Commit if changed
         run: |
