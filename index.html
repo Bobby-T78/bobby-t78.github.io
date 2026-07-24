@@ -265,13 +265,13 @@ footer a:hover{color:#fff}
 // Auto-refresh latest 3 essays from Substack RSS. If the fetch fails for any
 // reason, the hardcoded cards above stay in place untouched.
 (function(){
-  fetch('https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent('https://hickeyb.substack.com/feed'))
+  fetch('/latest.json')
     .then(function(r){ return r.ok ? r.json() : Promise.reject(); })
     .then(function(data){
-      if(!data.items || data.items.length < 3) return;
+      if(!data || data.length < 3) return;
       var wrap = document.getElementById('articles');
       wrap.innerHTML = '';
-      data.items.slice(0,3).forEach(function(item, i){
+      data.slice(0,3).forEach(function(item, i){
         var a = document.createElement('a');
         a.className = 'article';
         a.href = item.link;
