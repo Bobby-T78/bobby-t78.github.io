@@ -1,18 +1,11 @@
 const FEED = "https://hickeyb.substack.com/feed";
-const API_KEY = process.env.RSS2JSON_API_KEY;
 
-if (!API_KEY) {
-  throw new Error("Missing RSS2JSON_API_KEY environment variable.");
-}
-
-// rss2json fetches Substack from its own servers (not Cloudflare-blocked like
-// GitHub runner IPs are). Using our private API key gives a cache we control,
-// and the cache-buster forces a fresh pull so it never goes stale.
+// rss2json fetches Substack from its own (non-Cloudflare-blocked) servers.
+// The public endpoint caches aggressively, so the _cb timestamp forces a fresh
+// pull each run -- that's what defeats the stale-cache problem. No API key needed.
 const apiUrl =
   "https://api.rss2json.com/v1/api.json" +
   "?rss_url=" + encodeURIComponent(FEED) +
-  "&api_key=" + API_KEY +
-  "&count=10" +
   "&_cb=" + Date.now();
 
 const res = await fetch(apiUrl);
