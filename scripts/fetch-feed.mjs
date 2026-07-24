@@ -1,40 +1,35 @@
 const FEED = "https://hickeyb.substack.com/feed";
 
-// Fetch the Substack RSS feed directly. Substack sits behind Cloudflare, which
-// blocks requests that do not look like a real browser, so we send full browser
-// headers. Runs on the GitHub Actions server: no CORS, no third-party service.
-const res = await fetch(FEED, {
-  headers: {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-    "Accept-Language": "en-US,en;q=0.9",
-  },
-});
-const xml = await res.text();
+// Substack sits behind Cloudflare, which blocks direct fetches from the
+// GitHub Actions server (HTTP 403). rss2json fetches Substack from its own
+// non-blocked servers, so we go through it. Using the API key (when present)
+// raises limits and returns a fresher pull than the anonymous cached endpoint.
+const KEY = process.env.RSS2JSON_API_KEY;
 
-console.log("HTTP status:", res.status, "bytes:", xml.length);
+let apiUrl =
+  "https://api.rss2json.com/v1/api.json" +
+  "?rss_url=" + encodeURIComponent(FEED) +
+  "&count=10" +
+  "&_cb=" + Date.now();
+if (KEY) apiUrl += "&api_key=" + KEY;
 
-if (!res.ok || xml.length < 200) {
-  throw new Error("Could not fetch Substack feed. HTTP " + res.status);
+const res = await fetch(apiUrl);
+const data = await res.json();
+
+console.log("HTTP status:", res.status);
+console.log("API status:", data.status);
+console.log("Items returned:", Array.isArray(data.items) ? data.items.length : 0);
+
+if (!res.ok || data.status !== "ok" || !Array.isArray(data.items) || data.items.length === 0) {
+  console.log("Response message:", data.message || "(none)");
+  throw new Error("rss2json did not return a valid feed.");
 }
 
-function pick(block, tag) {
-  const m = block.match(new RegExp("<" + tag + ">([\s\S]*?)</" + tag + ">"));
-  if (!m) return "";
-  return m[1].replace(/^<!\[CDATA\[/, "").replace(/\]\]>$/, "").trim();
-}
-
-const items = [...xml.matchAll(/<item>([\s\S]*?)<\/item>/g)].map((m) => m[1]);
-
-if (items.length === 0) {
-  throw new Error("Feed contained no items.");
-}
-
-const posts = items.slice(0, 3).map((block) => ({
-  title: pick(block, "title"),
-  link: pick(block, "link"),
-  pubDate: pick(block, "pubDate"),
-  description: pick(block, "description").replace(/<[^>]+>/g, "").trim().slice(0, 160),
+const posts = data.items.slice(0, 3).map((item) => ({
+  title: item.title || "",
+  link: item.link || "",
+  pubDate: item.pubDate || "",
+  description: (item.description || "").replace(/<[^>]+>/g, "").trim().slice(0, 160),
 }));
 
 const { writeFile } = await import("node:fs/promises");
