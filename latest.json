@@ -1,5 +1,11 @@
 [
   {
+    "title": "Earn the Room",
+    "link": "https://hickeyb.substack.com/p/earn-the-room",
+    "pubDate": "2026-09-02 01:05:55",
+    "description": "America is fighting the AI buildout on two fronts. One is real. The other we started ourselves."
+  },
+  {
     "title": "The Bottleneck Was Never the GPU",
     "link": "https://hickeyb.substack.com/p/the-bottleneck-was-never-the-gpu",
     "pubDate": "2026-08-29 19:58:36",
@@ -10,11 +16,5 @@
     "link": "https://hickeyb.substack.com/p/the-ai-fit-scorecard",
     "pubDate": "2026-08-26 02:05:51",
     "description": "A free tool for small operators. Nine questions, an honest grade, and a live check of the model landscape the day you run it."
-  },
-  {
-    "title": "The Quarry Files a Permit. The Data Center Doesn’t.",
-    "link": "https://hickeyb.substack.com/p/the-quarry-files-a-permit-the-data",
-    "pubDate": "2026-08-17 00:44:42",
-    "description": "AI’s land and water footprint is an extraction story. I am standing up a permitted quarry right now. The tech industry is taking more ground and more water than"
   }
 ]
