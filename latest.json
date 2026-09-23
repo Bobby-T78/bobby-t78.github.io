@@ -1,5 +1,11 @@
 [
   {
+    "title": "The Purchasing Agent Is About to Become an Actual Agent",
+    "link": "https://hickeyb.substack.com/p/the-purchasing-agent-is-about-to",
+    "pubDate": "2026-09-23 13:31:02",
+    "description": "We were down two to three days waiting on a part."
+  },
+  {
     "title": "It’s not the LLM, it’s the human that exploits it",
     "link": "https://hickeyb.substack.com/p/its-not-the-llm-its-the-human-that",
     "pubDate": "2026-09-11 00:43:15",
@@ -10,11 +16,5 @@
     "link": "https://hickeyb.substack.com/p/earn-the-room",
     "pubDate": "2026-09-02 01:05:55",
     "description": "America is fighting the AI buildout on two fronts. One is real. The other we started ourselves."
-  },
-  {
-    "title": "The Bottleneck Was Never the GPU",
-    "link": "https://hickeyb.substack.com/p/the-bottleneck-was-never-the-gpu",
-    "pubDate": "2026-08-29 19:58:36",
-    "description": "China’s rare earth export controls return November 10, 2026. The AI data center buildout has a single point of failure, and it is not the chip."
   }
 ]
