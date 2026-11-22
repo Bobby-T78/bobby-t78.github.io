@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MSHA Reg Lookup: Free 30 CFR Answers in Plain Language | Bobby Hickey</title>
+<meta name="description" content="A free field tool for mine crews and supervisors. Ask an MSHA question in plain language and get the answer with the exact 30 CFR section and a link to the official text."/>
+<link rel="canonical" href="https://bobby.bobbythickey.com/msha-reg-lookup.html"/>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%2326363f'/%3E%3Ctext x='50' y='72' font-size='62' font-family='Arial,sans-serif' font-weight='bold' fill='white' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Bobby Hickey"/>
+<meta property="og:title" content="MSHA Reg Lookup"/>
+<meta property="og:description" content="A free field tool I built for my crew. Ask an MSHA question in plain language. Get the answer and the exact 30 CFR section."/>
+<meta property="og:url" content="https://bobby.bobbythickey.com/msha-reg-lookup.html"/>
+<meta property="og:image" content="https://bobby.bobbythickey.com/share-msha-reg-lookup.png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="MSHA Reg Lookup"/>
+<meta name="twitter:description" content="A free field tool I built for my crew. Ask an MSHA question in plain language. Get the answer and the exact 30 CFR section."/>
+<meta name="twitter:image" content="https://bobby.bobbythickey.com/share-msha-reg-lookup.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "MSHA Reg Lookup",
+      "description": "A free field tool for mine crews and supervisors. Ask an MSHA question in plain language and get the answer with the exact 30 CFR section and a link to the official text.",
+      "url": "https://claude.ai/public/artifacts/dfab29bb-f662-4dce-92f3-728d654d4193",
+      "mainEntityOfPage": "https://bobby.bobbythickey.com/msha-reg-lookup.html",
+      "applicationCategory": "ReferenceApplication",
+      "operatingSystem": "Web browser",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Person",
+        "name": "Bobby Hickey",
+        "url": "https://bobby.bobbythickey.com/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Disruptive Depths"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is the MSHA Reg Lookup free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. There is no fee and no email wall. It runs in Claude, so you need a free Claude account to use it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is it legal advice?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. It is a reference that points you to the exact section. Read the official text before you act on it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who built it?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "I did. I am Bobby Hickey, a plant manager in aggregates and the writer of Disruptive Depths. I built it for my own crew."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there one for OSHA?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The OSHA Reg Lookup works the same way for Title 29."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{--ink:#1c2733;--muted:#57626e;--accent:#c2620a;--accent-dark:#9a520a;--accent2:#2f6f6a;--line:#e3e6ea;--stripe:#f2b90d}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:var(--ink);background:#f6f4ef;line-height:1.65;font-size:17px}
+a{color:var(--accent2)}
+a:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:8px}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:18px;max-width:860px;margin:0 auto;padding:18px 22px}
+.nav a{text-decoration:none;font-weight:700}
+.nav .links{display:flex;gap:20px;font-size:15px}
+.logo{font-family:'Sora',sans-serif;font-weight:800;font-size:19px;color:var(--ink)}
+.logo span{color:var(--accent)}
+.top{background:#1c2733;color:#fff;border-bottom:5px solid var(--accent)}
+.top::before{content:"";display:block;height:14px;background:repeating-linear-gradient(-45deg,var(--stripe) 0 16px,#111 16px 32px)}
+.top .in{max-width:860px;margin:0 auto;padding:46px 22px 52px}
+.mark{font-family:'Sora',sans-serif;font-weight:800;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#ec841e}
+.sub{font-size:13px;font-weight:700;color:#6ec4bc;margin-top:2px}
+h1{font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(40px,8vw,64px);line-height:1.04;margin:22px 0 16px;text-wrap:balance}
+.lede{font-size:20px;line-height:1.55;color:#e6eaee;max-width:56ch}
+.note{font-size:14px;color:#aab4be;margin-top:16px}
+main{max-width:860px;margin:0 auto;padding:44px 22px 70px}
+section{margin-bottom:46px}
+h2{font-family:'Sora',sans-serif;font-weight:800;font-size:27px;line-height:1.2;margin-bottom:14px;text-wrap:balance}
+p{max-width:68ch;margin-bottom:14px}
+.lines p{margin-bottom:8px}
+ol.steps{list-style:none;counter-reset:c;display:grid;gap:12px;max-width:70ch}
+ol.steps li{counter-increment:c;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px 16px 62px;position:relative}
+ol.steps li::before{content:counter(c);position:absolute;left:22px;top:13px;font-family:'Sora',sans-serif;font-weight:800;font-size:24px;color:var(--accent)}
+ol.steps b{display:block}
+ol.steps span{color:var(--muted);font-size:16px}
+.caution{background:#fff;border:1px solid var(--line);border-left:8px solid var(--stripe);border-radius:14px;padding:20px 22px;max-width:70ch}
+.caution p:last-child{margin-bottom:0}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:18px 0 6px}
+.facts div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.facts b{display:block;font-family:'Sora',sans-serif;font-size:16px;margin-bottom:2px}
+.facts span{font-size:15px;color:var(--muted)}
+.tool{background:#fff;border:1px solid var(--line);border-left:6px solid var(--accent);border-radius:14px;padding:22px 24px;margin-bottom:14px;max-width:72ch}
+.tool h2{font-size:24px;margin-bottom:6px}
+.tool p{color:#33404d;margin-bottom:0}
+.tool .btns{margin-top:14px}
+.tool .text-link{font-weight:700;font-size:15px}
+.faq h3{font-size:18px;font-weight:700;margin:22px 0 6px}
+.faq p{color:#33404d}
+.cta{background:#1c2733;color:#fff;border-radius:20px;padding:30px 28px}
+.cta h2{color:#fff}
+.cta p{color:#cdd4dc}
+.btns{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:18px}
+.btn{display:inline-flex;align-items:center;min-height:48px;padding:12px 22px;border-radius:999px;font-weight:700;font-size:15px;text-decoration:none}
+.btn.primary{background:var(--accent-dark);color:#fff}
+.btn.primary:hover{background:#85460a}
+.btn.ghost{background:rgba(255,255,255,.14);color:#fff}
+.btn.ghost:hover{background:rgba(255,255,255,.22)}
+.top .btns{margin-top:26px}
+footer{max-width:860px;margin:0 auto;padding:0 22px 44px;color:var(--muted);font-size:14px}
+@media (max-width:560px){.nav .links{gap:14px}.top .in{padding:38px 20px 44px}.lede{font-size:18px}}
+</style>
+</head>
+<body>
+<header class="nav">
+<a class="logo" href="/">Bobby <span>Hickey</span></a>
+<div class="links"><a href="/tools.html">Field tools</a><a href="/">Home</a></div>
+</header>
+
+<div class="top"><div class="in">
+<div class="mark">Disruptive Depths</div>
+<div class="sub">ai in heavy industry</div>
+<h1>MSHA Reg Lookup</h1>
+<p class="lede">Ask an MSHA question in plain language. Get the answer, the exact 30 CFR section, and a link to the official text.</p>
+<div class="btns">
+<a class="btn primary" href="https://claude.ai/public/artifacts/dfab29bb-f662-4dce-92f3-728d654d4193" target="_blank" rel="noopener">Open the MSHA Reg Lookup</a>
+<a class="btn ghost" href="https://hickeyb.substack.com/p/the-book-in-the-glove-box" target="_blank" rel="noopener">Read why I built it</a>
+</div>
+<p class="note">Free. It runs in Claude, so you need a free Claude account to use it.</p>
+</div></div>
+
+<main>
+<section class="lines">
+<h2>Why I built it</h2>
+<p>Somebody on my crew is always asking about a regulation or a safety concern.</p>
+<p>Knowing the answer is not the same as citing it.</p>
+<p>In this business the section number matters as much as the answer.</p>
+<p>So I built a quick way to look up a regulation, ask a question, and get an answer with the section attached.</p>
+<p>The story behind it is in <a href="https://hickeyb.substack.com/p/the-book-in-the-glove-box" target="_blank" rel="noopener">The Book in the Glove Box</a>.</p>
+</section>
+
+<section>
+<h2>How it works</h2>
+<ol class="steps">
+<li><b>Pick your mine type.</b><span>It starts on surface metal and nonmetal, Part 56.</span></li>
+<li><b>Ask in plain language.</b><span>Guarding, berms, workplace exams, reporting timelines. Ask it the way you would ask your supervisor.</span></li>
+<li><b>Get the answer and the section.</b><span>Every answer cites the exact 30 CFR section it comes from.</span></li>
+<li><b>Check the official text.</b><span>Tap the citation to open the regulation on eCFR before you act.</span></li>
+</ol>
+</section>
+
+<section>
+<h2>What it is, and what it is not</h2>
+<div class="caution">
+<p>It is a fast first look.</p>
+<p>It is not the book, and it is not legal advice.</p>
+<p>Every answer links to the official text so you can verify before you act. When it matters, read the section and talk to your safety department.</p>
+</div>
+</section>
+
+<section class="faq">
+<h2>Questions people ask</h2>
+<h3>Is the MSHA Reg Lookup free?</h3>
+<p>Yes. There is no fee and no email wall. It runs in Claude, so you need a free Claude account to use it.</p>
+<h3>Is it legal advice?</h3>
+<p>No. It is a reference that points you to the exact section. Read the official text before you act on it.</p>
+<h3>Who built it?</h3>
+<p>I did. I am Bobby Hickey, a plant manager in aggregates and the writer of Disruptive Depths. I built it for my own crew.</p>
+<h3>Is there one for OSHA?</h3>
+<p>Yes. The <a href="/osha-reg-lookup.html">OSHA Reg Lookup</a> works the same way for Title 29.</p>
+</section>
+
+<section class="cta">
+<h2>More free field tools</h2>
+<p>Built on the floor, for the floor.</p>
+<div class="btns">
+<a class="btn primary" href="/osha-reg-lookup.html">OSHA Reg Lookup</a>
+<a class="btn ghost" href="/ai-fit-scorecard.html">AI Fit Scorecard</a>
+<a class="btn ghost" href="/tools.html">All field tools</a>
+</div>
+</section>
+</main>
+<footer>&copy; 2026 Bobby T. Hickey &middot; Disruptive Depths &middot; ai in heavy industry</footer>
+</body>
+</html>
